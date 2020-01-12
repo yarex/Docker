@@ -1,0 +1,119 @@
+-----
+docker run docker/whalesay cowsay Hello-World!   
+-----
+-----
+Commands:
+docker run nginx
+
+docker ps
+docker ps -a
+
+docker stop silly_sammet
+docker rm silly_sammet
+
+docker images
+
+docker rmi nginx
+
+docker pull nginx
+
+docker run ubuntu sleep 5
+
+docker exec distracted_mcclintock cat /etc/hosts
+
+docker run kodekloud/simple-webapp
+
+docker run -d kodekloud/simple-webapp
+docker attach a043d
+-----
+-----
+kodekloud.com/p/docker-labs
+-----
+-----
+Commands:
+docker run redis:4.0
+
+docker run -i kodekloud/simple-prompt-docker
+docker run -it kodekloud/simple-prompt-docker
+
+docker run -p 80:5000 kodekloud/simple-webapp
+
+docker run -p 8000:5000 kodekloud/simple-webapp
+docker run -p 8001:5000 kodekloud/simple-webapp
+docker run -p 3306:3306 mysql
+docker run -p 8306:3306 mysql
+
+docker run -v /opt/datadir:/var/lib/mysql mysql
+
+docker inspect blissful_hopper
+
+docker logs blissful_hopper
+-----
+-----
+export APP_COLOR=blue; python app.py
+docker run -e APP_COLOR=blue simple-webapp-color
+docker run -e APP_COLOR=green simple-webapp-color
+docker run -e APP_COLOR=pink simple-webapp-color
+-----
+-----
+Dockerfile:
+
+FROM Ubuntu 
+
+RUN apt-get update
+RUN apt-get install python
+
+RUN apt-get install flask
+RUN apt-get install flask-mysql
+
+COPY . /opt/source-code
+
+ENTRYPOINT FLASK_APP=/opt/source-code/app.py flask run
+-----
+-----
+docker build Dockerfile -t mmumshad/my-custom-app
+docker push mmumshad/my-custom-app
+-----
+-----
+docker run ubuntu sleep 5
+
+FROM Ubuntu
+CMD sleep 5
+
+docker build -t ubuntu-sleeper .
+docker run ubuntu-sleeper
+
+FROM Ubuntu
+ENTRYPOINT ["sleep"]
+
+docker run ubuntu-sleeper 10
+
+FROM Ubuntu
+ENTRYPOINT ["sleep"]
+CMD ["5"]
+
+docker run ubuntu-sleeper 10
+
+docker run --entrypoint sleep2.0 ubuntu-sleeper 10
+-----
+-----
+Bridge:
+docker run ubuntu
+None:
+docker run Ubuntu --network=none
+Host:
+docker run Ubuntu --network=host
+
+docker network create \
+	--driver bridge \
+	--subnet 182.18.0.0/16
+	custom-isolated-network
+	
+docker network ls
+-----
+-----
+docker volume create data_volume
+docker run -v data_volume:/var/lib/mysql mysql
+-----
+-----
+-----

@@ -1,0 +1,13 @@
+-----
+> docker-machine ls
+> docker-machine start
+
+cmder.net
+
+> docker version
+> docker-machine help 
+> docker-machine env default
+> @FOR /f "tokens=*" %i IN ('docker-machine env default') DO @%i
+
+-----
+-----
