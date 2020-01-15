@@ -7,6 +7,70 @@
 > docker image ls
 -----
 -----
+> docker image ls
 
+> docker history nginx:latest
+> docker image history nginx:latest
+
+> docker image inspect nginx
+-----
+-----
+> docker image tag --help
+
+> docker pull mysql/mysql-server
+> docker pull nginx:mainline
+
+> docker image tag nginx bretfisher/nginx
+> docker image push bretfisher/nginx
+
+> docker login
+> cat .docker/config.json
+> docker logout
+
+> docker image tag bretfisher/nginx bretfisher/nginx:testing
+> docker image push bretfisher/nginx:testing
+-----
+-----
+> cd dockerfile-sample-1
+> vim Dockerfile
+-----
+-----
+> docker image build -t customnginx .
+-----
+-----
+> cd dockerfile-sample-2
+> vim Dockerfile
+
+> docker container run -p 80:80 --rm nginx
+
+> docker image build -t nginx-with-html .
+> docker container run -p 80:80 --rm nginx-with-html
+> docker image tag nginx-with-html:latest bretfisher/nginx-with-html:latest
+-----
+-----
+
+> docker image build -t yarex/node_dockerfile_assignment1 .
+> docker login
+> docker image push yarex/node_dockerfile_assignment1
+> docker image rm yarex/node_dockerfile_assignment1
+> docker container run -d -p 80:3000 yarex/node_dockerfile_assignment1
+
+> vim Dockerfile
+> docker build -t testnode .
+> docker container run --rm -p 80:3000 testnode
+> docker images
+> docker tag testnode bretfisher/testing-node
+> docker push bretfisher/testing-node
+> docker image rm bretfisher/testing-node
+> docker container run --rm -p 80:3000 bretfisher/testing-node
+-----
+-----
+docker image prune
+docker system prune
+docker image prune -a
+docker system df
+
+docker-machine rm default
+docker-machine create
 -----
 -----

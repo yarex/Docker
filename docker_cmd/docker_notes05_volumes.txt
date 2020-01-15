@@ -1,4 +1,75 @@
 -----
+> docker volume prune
+
+> docker pull mysql
+> docker image inspect mysql
+> docker container run -d --name mysql -e MYSQL_ALLOW_EMPTY_PASSWORD=True mysql
+> docker container inspect mysql
+
+> docker volume ls
+> docker volume inspect 213
+
+> docker container run -d --name mysql2 -e MYSQL_ALLOW_EMPTY_PASSWORD=True mysql
+> docker volume ls
+
+> docker container stop mysql
+> docker container stop mysql2
+> docker container ls
+> docker container ls -a
+> docker volume ls
+
+> docker container rm mysql mysql2
+> docker volume ls
+
+> docker container run -d --name mysql -e MYSQL_ALLOW_EMPTY_PASSWORD=True -v mysql-db:/var/lib/mysql mysql
+> docker volume ls
+> docker volume inspect mysql-db
+
+> docker container rm -f mysql
+> docker container run -d --name mysql3 -e MYSQL_ALLOW_EMPTY_PASSWORD=True -v mysql-db:/var/lib/mysql mysql
+> docker volume ls
+> docker container inspect mysql3
+
+> docker volume create --help
+-----
+-----
+> cd dockerfile-sample-2
+> pcat Dockerfile
+
+// Terminal 1
+> docker container run -d --name nginx -p 80:80 -v $(pwd):/usr/share/nginx/html nginx
+> docker container run -d --name nginx2 -p 8080:80 nginx
+
+// Terminal 2
+> docker container exec -it nginx bash
+>> cd /usr/share/nginx/html
+>> ls -al
+
+// Terminal 1
+> touch testme.txt
+> echo "is it me you're looking for" > testme.txt
+
+// Terminal 2
+>> ls -al
+
+-----
+-----
+> docker container run -d --name postgres -v postgres-db:/var/lib/postgresql/data postgres:9.6.1
+> docker container logs postgres
+> docker container stop postgres
+> docker container run -d --name postgres2 -v postgres-db:/var/lib/postgresql/data postgres:9.6.2
+> docker container logs postgres2
+
+> docker container run -d --name psql -v psql:/var/lib/postgresql/data postgres:9.6.1
+> docker container logs -f psql
+> docker container stop psql
+> docker container run -d --name psql2 -v psql:/var/lib/postgresql/data postgres:9.6.2
+> docker container ps -a
+> docker volume ls
+> docker container logs psql2
+-----
+-----
+> docker run -p 80:4000 -v $(pwd):/site bretfisher/jekyll-serve
 
 -----
 -----
